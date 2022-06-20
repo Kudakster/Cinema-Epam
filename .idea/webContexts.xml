@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/addMovie.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/movies.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/pages/admin/auditorium.jsp" value="file://$PROJECT_DIR$/src/main/webapp/pages/admin" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/pages/admin/updateSchedule.jsp" value="file://$PROJECT_DIR$/src/main/webapp/pages/admin" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/pages/guest/sign-in.jsp" value="file://$PROJECT_DIR$/src/main/webapp/pages/guest" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/pages/login.jsp" value="file://$PROJECT_DIR$/src/main/webapp/pages" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/pages/main.jsp" value="file://$PROJECT_DIR$/src/main/webapp/pages" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/pages/parts/header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/pages/parts" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/pages/sign-up.jsp" value="file://$PROJECT_DIR$/src/main/webapp/pages" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/pages/sign-up.jsp.xhtml" value="file://$PROJECT_DIR$/src/main/webapp/pages" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/pages/user/user.jsp" value="file://$PROJECT_DIR$/src/main/webapp/pages/user" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/parts/header.html" value="file://$PROJECT_DIR$/src/main/webapp/parts" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/parts/header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/parts" />
+      </map>
+    </option>
+  </component>
+</project>

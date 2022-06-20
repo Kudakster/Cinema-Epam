@@ -1,0 +1,33 @@
+20-05-2022 15:33:50 ERROR DAOGeneral.update, line 118 -> java.sql.SQLException: No value specified for parameter 7
+20-05-2022 15:37:03 ERROR DAOGeneral.getAllBy, line 92 -> java.sql.SQLException: Cannot convert string '\xAC\xED\x00\x05~r...' from binary to utf8mb4
+20-05-2022 17:28:03 ERROR DAOGeneral.delete, line 131 -> java.sql.SQLException: No value specified for parameter 1
+20-05-2022 17:29:24 ERROR DAOGeneral.delete, line 131 -> java.sql.SQLException: No value specified for parameter 1
+20-05-2022 17:43:05 ERROR DAOGeneral.add, line 104 -> java.sql.SQLException: Parameter index out of range (7 > number of parameters, which is 6).
+20-05-2022 17:44:46 ERROR DAOGeneral.add, line 104 -> java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'werton' for key 'users.user_login'
+30-05-2022 14:08:55 ERROR DAOGeneral.delete, line 131 -> java.sql.SQLException: No value specified for parameter 1
+30-05-2022 16:41:39 ERROR DAOGeneral.add, line 104 -> java.sql.SQLIntegrityConstraintViolationException: Column 'movie_duration_min' cannot be null
+30-05-2022 19:38:49 ERROR DAOGeneral.add, line 104 -> java.sql.SQLIntegrityConstraintViolationException: Column 'movie_duration_min' cannot be null
+30-05-2022 19:39:11 ERROR DAOGeneral.delete, line 131 -> java.sql.SQLException: No value specified for parameter 1
+30-05-2022 20:06:50 ERROR DAOGeneral.update, line 118 -> java.sql.SQLException: No value specified for parameter 9
+30-05-2022 20:09:29 ERROR DAOGeneral.update, line 118 -> java.sql.SQLException: No value specified for parameter 9
+30-05-2022 20:10:22 ERROR DAOGeneral.update, line 118 -> java.sql.SQLException: No value specified for parameter 9
+30-05-2022 20:12:26 ERROR DAOGeneral.update, line 119 -> java.sql.SQLException: No value specified for parameter 9
+14-06-2022 15:21:22 ERROR DAOGeneral.getAllBy, line 105 -> java.sql.SQLDataException: Unsupported conversion from DATE to java.lang.Integer
+14-06-2022 15:23:26 ERROR DAOGeneral.getAllBy, line 105 -> java.sql.SQLDataException: Unsupported conversion from DATE to java.lang.Integer
+14-06-2022 15:27:59 ERROR DAOGeneral.getAllBy, line 105 -> java.sql.SQLDataException: Unsupported conversion from DATE to java.lang.Integer
+14-06-2022 15:29:35 ERROR DAOGeneral.getAllBy, line 105 -> java.sql.SQLDataException: Unsupported conversion from DATE to java.lang.Integer
+14-06-2022 15:30:29 ERROR DAOGeneral.getAllBy, line 106 -> java.sql.SQLDataException: Unsupported conversion from DATE to java.lang.Integer
+14-06-2022 15:30:48 ERROR DAOGeneral.getAllBy, line 106 -> java.sql.SQLDataException: Unsupported conversion from DATE to java.lang.Integer
+14-06-2022 15:33:06 ERROR DAOGeneral.getAllBy, line 105 -> java.sql.SQLDataException: Unsupported conversion from DATE to java.lang.Integer
+14-06-2022 15:33:28 ERROR DAOGeneral.getAllBy, line 105 -> java.sql.SQLDataException: Unsupported conversion from DATE to java.lang.Integer
+14-06-2022 15:33:40 ERROR DAOGeneral.getAllBy, line 105 -> java.sql.SQLDataException: Unsupported conversion from DATE to java.lang.Integer
+14-06-2022 15:35:46 ERROR DAOGeneral.getAllBy, line 105 -> java.sql.SQLDataException: Unsupported conversion from DATE to java.lang.Integer
+14-06-2022 15:48:00 ERROR DAOGeneral.getAllBy, line 105 -> java.sql.SQLDataException: Unsupported conversion from DATE to java.lang.Integer
+14-06-2022 15:52:38 ERROR DAOGeneral.getAllBy, line 105 -> java.sql.SQLSyntaxErrorException: Table 'cinema.screening' doesn't exist
+14-06-2022 15:55:48 ERROR DAOGeneral.getAllBy, line 105 -> java.sql.SQLDataException: Unsupported conversion from DATE to java.lang.Integer
+14-06-2022 15:57:40 ERROR DAOGeneral.getAllBy, line 105 -> java.sql.SQLException: Column 'screening_id' not found.
+14-06-2022 15:58:28 ERROR DAOGeneral.getAllBy, line 105 -> java.sql.SQLException: Column 'screening_id' not found.
+14-06-2022 16:10:55 ERROR DAOGeneral.getAllBy, line 105 -> java.sql.SQLException: Column 'screening_id' not found.
+14-06-2022 22:41:40 ERROR DAOGeneral.get, line 53 -> java.sql.SQLException: No value specified for parameter 2
+14-06-2022 22:42:09 ERROR DAOGeneral.get, line 53 -> java.sql.SQLException: Parameter index out of range (1 > number of parameters, which is 0).
+14-06-2022 22:44:23 ERROR DAOGeneral.get, line 53 -> java.sql.SQLException: Parameter index out of range (1 > number of parameters, which is 0).

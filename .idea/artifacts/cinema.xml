@@ -1,0 +1,31 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="cinema">
+    <output-path>$PROJECT_DIR$/out/artifacts/cinema</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="cinema" />
+          <element id="library" level="application" name="bootstrap" />
+          <element id="library" level="application" name="jquery" />
+          <element id="library" level="application" name="jquery.validate" />
+          <element id="library" level="application" name="mdb" />
+          <element id="library" level="application" name="jquery-3.5.1.slim" />
+          <element id="library" level="application" name="jquery-1.11.0" />
+          <element id="library" level="application" name="jquery-migrate-1.2.1" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: javax.mvc:javax.mvc-api:1.0.0" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-jdbc:9.0.12" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-juli:9.0.12" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.28" />
+          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
+          <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
+          <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.5.4" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="cinema/web/Web" />
+    </root>
+  </artifact>
+</component>

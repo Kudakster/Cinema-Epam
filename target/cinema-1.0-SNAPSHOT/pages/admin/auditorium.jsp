@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="${sessionScope.get('locale')}">
 <head>
@@ -54,8 +53,8 @@
                 </tbody>
             </table>
             <div class="button-container">
-                <button type="button" name="add-row-button" class="btn btn-primary"><fmt:message key="button.addRow"/></button>
-                <button class="btn btn-primary"><fmt:message key="button.save"/></button>
+                <button type="button" name="add-row-button" class="btn btn-primary">Add Row</button>
+                <button class="btn btn-primary">Save</button>
             </div>
         </form>
     </div>

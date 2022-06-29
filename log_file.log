@@ -31,3 +31,19 @@
 14-06-2022 22:41:40 ERROR DAOGeneral.get, line 53 -> java.sql.SQLException: No value specified for parameter 2
 14-06-2022 22:42:09 ERROR DAOGeneral.get, line 53 -> java.sql.SQLException: Parameter index out of range (1 > number of parameters, which is 0).
 14-06-2022 22:44:23 ERROR DAOGeneral.get, line 53 -> java.sql.SQLException: Parameter index out of range (1 > number of parameters, which is 0).
+25-06-2022 16:46:34 ERROR DAOGeneral.add, line 117 -> java.sql.SQLIntegrityConstraintViolationException: Column 'user_firstname' cannot be null
+27-06-2022 14:48:16 ERROR DAOGeneral.add, line 117 -> java.sql.SQLIntegrityConstraintViolationException: Column 'user_firstname' cannot be null
+27-06-2022 14:51:40 ERROR DAOGeneral.add, line 117 -> java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'user' for key 'users.user_login'
+27-06-2022 17:54:52 ERROR DAOGeneral.delete, line 166 -> java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`cinema`.`screenings`, CONSTRAINT `screenings_ibfk_1` FOREIGN KEY (`auditorium_id`) REFERENCES `auditorium` (`auditorium_id`))
+29-06-2022 08:44:19 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
+29-06-2022 08:50:23 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
+29-06-2022 08:52:06 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
+29-06-2022 08:53:34 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
+29-06-2022 08:54:29 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
+29-06-2022 08:55:40 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
+29-06-2022 08:57:35 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
+29-06-2022 09:13:17 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
+29-06-2022 09:14:03 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
+29-06-2022 09:14:47 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
+29-06-2022 09:16:19 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
+29-06-2022 10:03:46 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2

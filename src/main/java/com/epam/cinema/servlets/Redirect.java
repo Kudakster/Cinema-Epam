@@ -22,6 +22,12 @@ public class Redirect implements Executor {
         this.command = command;
     }
 
+    public Redirect(String errorCommand, String errorKey) {
+        this.isValid = false;
+        this.command = errorCommand;
+        this.errorKey = errorKey;
+    }
+
     public Redirect(boolean isValid, String command, String errorCommand, String errorKey) {
         this.isValid = isValid;
         this.command = command;

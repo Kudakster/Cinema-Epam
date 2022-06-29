@@ -17,8 +17,9 @@ public class CommandUpdateUser implements ICommand {
     @Override
     public Executor execute(HttpServletRequest request, HttpServletResponse response) {
         String login = request.getParameter("login");
-        String surName = request.getParameter("surname");
         String firstName = request.getParameter("firstname");
+        String surName = request.getParameter("surname");
+
 
         User user = (User) request.getSession().getAttribute("user");
 

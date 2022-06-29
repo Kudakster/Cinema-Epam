@@ -7,7 +7,7 @@ import com.epam.cinema.service.ISeatReservedService;
 import java.util.List;
 
 public class SeatReservedServiceImpl implements ISeatReservedService {
-    private final DAOSeatReservedImpl daoSeatReserved;
+    private DAOSeatReservedImpl daoSeatReserved;
     private static SeatReservedServiceImpl instance = null;
 
     public SeatReservedServiceImpl() {

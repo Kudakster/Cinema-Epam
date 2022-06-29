@@ -20,39 +20,39 @@
 <body>
 <div class="d-flex align-items-start justify-content-start position-relative">
     <div class="d-inline-block w-100">
-        <h3>Add Screening</h3>
+        <h3><fmt:message key="h.addScreening"/></h3>
             <div class="ms-3 mb-3" id="screening-form">
-                <form action="${pageContext.request.contextPath}/cinema/update-screening"
-                      method="get">
+                <form action="${pageContext.request.contextPath}/cinema/add-screening"
+                      method="post">
 
                     <div class="mb-3 mt-3 wrapper">
-                        <label for="movie-name">Movie Name
+                        <label for="movie-name"><fmt:message key="label.movie.name"/>
                             <input class="form-control" name="movie-name" type="text">
                         </label>
                     </div>
 
                     <div class="mb-3 mt-3">
-                        <label for="date" class="form-label">Date
+                        <label for="date" class="form-label"><fmt:message key="label.date"/>
                             <input type="date" id="date-form" class="form-control w-100" name="date"
                                    min=""/>
                         </label>
                     </div>
 
                     <div class="mb-3 mt-3">
-                        <label class="form-label">Start Time
+                        <label class="form-label"><fmt:message key="label.startTime"/>
                             <input type="time" class="form-control w-100" name="startTime"
                                    min="09:00:00" max="22:00:00"/>
                         </label>
                     </div>
 
                     <div class="mb-3 mt-3">
-                        <label class="form-label">End Time
+                        <label class="form-label"><fmt:message key="label.endTime"/>
                             <input type="time" class="form-control w-100" name="endTime"
                                    min="09:00:00" max="00:00:00"/>
                         </label>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mb-2" style="width: 72px">Save
+                    <button type="submit" class="btn btn-primary mb-2" style="width: 72px"><fmt:message key="button.save"/>
                     </button>
                 </form>
             </div>
@@ -62,16 +62,13 @@
                      id="day-block">
                     <c:forEach items="${item.value}" var="screening">
                         <div class="ms-3 mb-3" id="screening-form">
-                            <form id="screening-action"
-                                  action="${pageContext.request.contextPath}/cinema/update-screening"
-                                  method="post">
                                 <input id="screeningID" class="form-control" name="screeningID"
                                        value="${screening.screeningID}" hidden/>
 
                                 <div class="mb-3 mt-3 wrapper">
                                     <div class="search-input">
                                         <a href="" target="_blank" hidden></a>
-                                        <label for="movie-name">Movie Name</label>
+                                        <label for="movie-name"><fmt:message key="label.movie.name"/></label>
                                         <input id="movie-name" class="form-control" name="movie-name" type="text"
                                                value="${requestScope.movieMap.get(screening.movieID)}">
                                         <div class="autocom-box"></div>
@@ -79,34 +76,31 @@
                                 </div>
 
                                 <div class="mb-3 mt-3">
-                                    <label for="date" class="form-label">Date
+                                    <label for="date" class="form-label"><fmt:message key="label.date"/>
                                         <input type="date" id="date" class="form-control w-100" name="date"
                                                min="${screening.date}" value="${screening.date}"/>
                                     </label>
                                 </div>
 
                                 <div class="mb-3 mt-3">
-                                    <label for="startTime" class="form-label">Start Time
+                                    <label for="startTime" class="form-label"><fmt:message key="label.startTime"/>
                                         <input type="time" id="startTime" class="form-control w-100" name="startTime"
                                                min="09:00:00" max="22:00:00" value="${screening.startTime}"/>
                                     </label>
                                 </div>
 
                                 <div class="mb-3 mt-3">
-                                    <label for="endTime" class="form-label">End Time
+                                    <label for="endTime" class="form-label"><fmt:message key="label.endTime"/>
                                         <input type="time" id="endTime" class="form-control w-100" name="endTime"
                                                min="09:00:00" max="00:00:00" value="${screening.endTime}"/>
                                     </label>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary mb-2" style="width: 72px">Save
-                                </button>
-                            </form>
                             <form action="${pageContext.request.contextPath}/cinema/delete-screening"
                                   id="delete-form">
-                                <input name="movie-id" value="${screening.screeningID}" hidden>
+                                <input name="screening-id" value="${screening.screeningID}" hidden>
                                 <button type="submit" class="btn btn-danger" id="delete-screening" style="width: 72px">
-                                    Delete
+                                    <fmt:message key="button.delete"/>
                                 </button>
                             </form>
                         </div>

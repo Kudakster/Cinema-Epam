@@ -21,23 +21,6 @@ ${pageContext.ELContext.importHandler.importClass('java.net.URLEncoder')}
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
-
-
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/css/sign-in.css" rel="stylesheet">
 </head>
@@ -52,16 +35,16 @@ ${pageContext.ELContext.importHandler.importClass('java.net.URLEncoder')}
     </form>
 
     <form method="post" action="${pageContext.request.contextPath}/cinema/sign-in">
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <h1 class="h3 mb-3 fw-normal"><fmt:message key="label.sign-in"/></h1>
 
         <div class="form-floating">
-                <input type="text" class="form-control" name="login" id="floatingInput" placeholder="Login"
+                <input type="text" class="form-control" name="login" id="floatingInput" placeholder="<fmt:message key="label.login"/>"
                        value="">
-            <label for="floatingInput" value="">Login</label>
+            <label for="floatingInput" value=""><fmt:message key="label.login"/></label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="<fmt:message key="label.password"/>">
+            <label for="floatingPassword"><fmt:message key="label.password"/></label>
         </div>
 
         <div class="error-input">
@@ -70,7 +53,7 @@ ${pageContext.ELContext.importHandler.importClass('java.net.URLEncoder')}
             </c:if>
         </div>
 
-        <button class="w-100 btn btn-lg btn-primary">Sign in</button>
+        <button class="w-100 btn btn-lg btn-primary"><fmt:message key="button.sign-in"/></button>
         <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
     </form>
 </main>

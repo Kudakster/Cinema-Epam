@@ -6,6 +6,7 @@ header {
     width: 100%;
 }
 
+
 .image-overflow {
     height: 600px !important;
     width: 400px !important;
@@ -94,5 +95,35 @@ iframe {
     .container-header {
         margin-right: 24px;
         margin-left: 24px;
+    }
+}
+
+@media (max-device-height: 1080px) {
+    .movie-image {
+        width: 600px !important;
+        height: 800px !important;
+    }
+    .rectangle {
+        width: 600px !important;
+        height: 800px !important;
+    }
+    .image-overflow {
+        width: 600px !important;
+        height: 800px !important;
+    }
+}
+
+@media (max-device-height: 768px) {
+    .movie-image {
+        width: 400px !important;
+        height: 600px !important;
+    }
+    .rectangle {
+        width: 400px !important;
+        height: 600px !important;
+    }
+    .image-overflow {
+        width: 400px !important;
+        height: 600px !important;
     }
 }

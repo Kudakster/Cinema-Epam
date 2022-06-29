@@ -12,7 +12,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class SeatServiceImpl implements ISeatService {
-    private final DAOSeatImpl daoSeat;
+    private DAOSeatImpl daoSeat;
     private static SeatServiceImpl instance = null;
 
     public SeatServiceImpl() {
@@ -130,5 +130,9 @@ public class SeatServiceImpl implements ISeatService {
         if (instance == null)
             instance = new SeatServiceImpl();
         return instance;
+    }
+
+    public static void setInstance(SeatServiceImpl instance) {
+        SeatServiceImpl.instance = instance;
     }
 }

@@ -36,7 +36,7 @@
             </c:forEach>
         </select>
     </c:forEach>
-        <button type="submit">Buy Ticket</button>
+        <button type="submit"><fmt:message key="button.buyTicket"/></button>
     </form>
 </div>
 </body>

@@ -4,25 +4,19 @@ import com.epam.cinema.dao.implementation.DAOUserImpl;
 import com.epam.cinema.enity.User;
 import com.epam.cinema.enity.enumeration.UserRole;
 import com.epam.cinema.service.IUserService;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.List;
 
 public class UserServiceImpl implements IUserService {
-    private final DAOUserImpl daoUser;
+    private DAOUserImpl daoUser;
     private static UserServiceImpl instance = null;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public UserServiceImpl() {
+        bCryptPasswordEncoder = new BCryptPasswordEncoder();
         daoUser = new DAOUserImpl();
-    }
-
-    @Override
-    public List<User> findAllUsers() {
-        return daoUser.getAllUser();
-    }
-
-    @Override
-    public List<User> findUsersByRole(UserRole userRole) {
-        return daoUser.getUsersByRole(userRole);
     }
 
     @Override
@@ -36,18 +30,28 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User verifyUser(User user) {
+    public List<User> findAllUsers() {
+        return daoUser.getAllUser();
+    }
+
+    @Override
+    public List<User> findUsersByRole(UserRole userRole) {
+        return daoUser.getUsersByRole(userRole);
+    }
+
+    @Override
+    public User verifyUserAndReturnUser(User user) {
         User userDao = daoUser.getUserByLogin(user.getLogin());
-
-        if (userDao != null && userDao.getPassword().equals(user.getPassword())) {
+        if (userDao != null && BCrypt.checkpw(user.getPassword(), userDao.getPassword())) {
             return userDao;
+        } else {
+            return null;
         }
-
-        return null;
     }
 
     @Override
     public boolean addUser(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return daoUser.addUser(user);
     }
 
@@ -65,5 +69,9 @@ public class UserServiceImpl implements IUserService {
         if (instance == null)
             instance = new UserServiceImpl();
         return instance;
+    }
+
+    public static void setInstance(UserServiceImpl instance) {
+        UserServiceImpl.instance = instance;
     }
 }

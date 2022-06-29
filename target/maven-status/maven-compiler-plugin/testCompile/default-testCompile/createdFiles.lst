@@ -1,3 +1,6 @@
 MovieServiceImplTest.class
+ScreeningServiceImplTest.class
+UserValidatorTest.class
 MySQLConnectionTest.class
+service\UserServiceTest.class
 UserServiceImplTest.class

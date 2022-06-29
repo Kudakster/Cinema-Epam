@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class CommandAddMovie implements ICommand {
+    private RequestUtil requestUtil = new RequestUtil();
     private final String COMMAND = "admin";
     private final String ERROR_COMMAND = "add-movie";
     private final String ERROR_KEY = "movie.alreadyExist";
 
     @Override
     public Executor execute(HttpServletRequest request, HttpServletResponse response) {
-        Movie movie = RequestUtil.getMovieFromRequest(request);
-
+        Movie movie = requestUtil.getMovieFromRequest(request);
         return new Redirect(ServiceFactory.getMovieService().addMovie(movie), COMMAND, ERROR_COMMAND, ERROR_KEY);
     }
 }

@@ -8,7 +8,6 @@
 
 <%@ include file="/pages/parts/header.jsp" %>
 <html lang="${sessionScope.get('locale')}">
-<html>
 <head>
     <title>Cinema</title>
     <meta charset="utf-8">
@@ -29,8 +28,7 @@
         <c:forEach items="${requestScope.screenings}" var="item">
             <div class="rectangle" hidden>
                 <div class="poster">
-                    <img src="${pageContext.request.contextPath}${item.key.imgURL}" width="400"
-                         height="600">
+                    <img class="movie-image" src="${pageContext.request.contextPath}${item.key.imgURL}" alt="">
                 </div>
                 <div class="image-overflow">
                     <form action="${pageContext.request.contextPath}/cinema/u-movie" method="get">

@@ -1,7 +1,9 @@
 package com.epam.cinema.commands.update;
 
 import com.epam.cinema.commands.ICommand;
+import com.epam.cinema.enity.Auditorium;
 import com.epam.cinema.service.ServiceFactory;
+import com.epam.cinema.service.implementation.AuditoriumServiceImpl;
 import com.epam.cinema.servlets.Executor;
 import com.epam.cinema.servlets.Redirect;
 
@@ -15,6 +17,11 @@ public class CommandUpdateAuditorium implements ICommand {
 
     @Override
     public Executor execute(HttpServletRequest request, HttpServletResponse response) {
-        return new Redirect(ServiceFactory.getAuditoriumService().updateAuditorium(request), COMMAND, ERROR_COMMAND, ERROR_KEY);
+        Auditorium auditorium = (Auditorium) request.getSession().getAttribute("auditorium");
+        String auditoriumName = request.getParameter("name");
+        auditorium.setAuditoriumName(auditoriumName);
+        AuditoriumServiceImpl auditoriumService = ServiceFactory.getAuditoriumService();
+        boolean result = auditoriumService.updateAuditorium(auditorium);
+        return new Redirect(result, COMMAND, ERROR_COMMAND, ERROR_KEY);
     }
 }

@@ -3,7 +3,6 @@ package com.epam.cinema.servlets;
 import com.epam.cinema.config.Configuration;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -36,5 +35,25 @@ public class Forward implements Executor {
             request.getRequestDispatcher(Configuration.getInstance().getPage(errorPage)).forward(request, response);
         }
 
+    }
+
+    public boolean isValid() {
+        return isValid;
+    }
+
+    public void setValid(boolean valid) {
+        isValid = valid;
+    }
+
+    public String getPage() {
+        return page;
+    }
+
+    public String getErrorPage() {
+        return errorPage;
+    }
+
+    public void setErrorPage(String errorPage) {
+        this.errorPage = errorPage;
     }
 }

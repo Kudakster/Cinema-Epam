@@ -15,11 +15,8 @@ public class CommandOpenAuditoriumPage implements ICommand {
 
     @Override
     public Executor execute(HttpServletRequest request, HttpServletResponse response) {
-        Auditorium auditorium = ServiceFactory.getAuditoriumService().findAllAuditoriums().get(0);
-
         request.setAttribute("seats", ServiceFactory.getSeatService().findAllRowsAndSeats());
-        request.getSession().setAttribute("auditorium", auditorium);
-
+        request.getSession().setAttribute("auditorium", ServiceFactory.getAuditoriumService().findAllAuditoriums().get(0));
         return new Forward(PAGE);
     }
 }

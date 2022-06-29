@@ -22,8 +22,8 @@ public class CommandOpenListOfMoviesPage implements ICommand {
 
         List<Movie> movies = ServiceFactory.getMovieService().findMoviesByPagination(missedPages, numberPages);
         String numberAllMovies = String.valueOf(ServiceFactory.getMovieService().countAllMovies());
-        request.setAttribute("movieList", movies);
 
+        request.setAttribute("movieList", movies);
         response.addCookie(new Cookie("numberAllMovies", numberAllMovies));
         return new Forward(PAGE);
     }

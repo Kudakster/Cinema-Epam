@@ -12,7 +12,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ScreeningServiceImpl implements IScreeningService {
-    private final DAOScreeningImpl daoScreening;
+    private DAOScreeningImpl daoScreening;
     private static ScreeningServiceImpl instance = null;
 
     public ScreeningServiceImpl() {
@@ -117,12 +117,6 @@ public class ScreeningServiceImpl implements IScreeningService {
         return map;
     }
 
-    public static ScreeningServiceImpl getInstance() {
-        if (instance == null)
-            instance = new ScreeningServiceImpl();
-        return instance;
-    }
-
     private boolean isTimeAvailable(Screening screening, Time startTime, Time endTime) {
         return (screening.getStartTime().getTime() < startTime.getTime() &&
                 screening.getEndTime().getTime() < startTime.getTime()) ||
@@ -142,5 +136,16 @@ public class ScreeningServiceImpl implements IScreeningService {
         }));
         map.clear();
         list.forEach(e -> map.put(e.getKey(), e.getValue()));
+    }
+
+    public static ScreeningServiceImpl getInstance() {
+        if (instance == null) {
+            instance = new ScreeningServiceImpl();
+        }
+        return instance;
+    }
+
+    public static void setInstance(ScreeningServiceImpl instance) {
+        ScreeningServiceImpl.instance = instance;
     }
 }

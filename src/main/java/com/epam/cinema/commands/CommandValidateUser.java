@@ -5,9 +5,11 @@ import com.epam.cinema.service.ServiceFactory;
 import com.epam.cinema.servlets.Executor;
 import com.epam.cinema.servlets.Redirect;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
+import java.util.Objects;
 
 public class CommandValidateUser implements ICommand {
     private final String COMMAND = "user";
@@ -21,14 +23,13 @@ public class CommandValidateUser implements ICommand {
 
         User user = new User(login, password);
 
-//        Cookie error = Validation.validate(user);
-//
-//        if (!Objects.equals(error.getValue(), "")) {
-//            response.addCookie(error);
-//            return new Redirect(ERROR_COMMAND);
-//        }
+        String error = Validation.validate(user);
 
-        User userFromDB = ServiceFactory.getUserService().verifyUser(user);
+        if (!Objects.equals(error, "")) {
+            return new Redirect(ERROR_COMMAND, error);
+        }
+
+        User userFromDB = ServiceFactory.getUserService().verifyUserAndReturnUser(user);
         boolean result = userFromDB != null;
 
         request.getSession().setAttribute("date", new Date(System.currentTimeMillis()));

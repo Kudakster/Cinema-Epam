@@ -9,7 +9,7 @@ import java.sql.Time;
 import java.util.List;
 
 public class TicketServiceImpl implements ITicketService {
-    private final DAOTicketImpl daoTicket;
+    private DAOTicketImpl daoTicket;
     private static TicketServiceImpl instance = null;
 
     public TicketServiceImpl() {
@@ -34,9 +34,7 @@ public class TicketServiceImpl implements ITicketService {
     @Override
     public List<Ticket> findTicketsByUserIDAndCurrentTime(Integer id) {
         Date date = new Date(System.currentTimeMillis());
-        Time time = new Time(System.currentTimeMillis());
-
-        return daoTicket.getAllTicketByUserIDAndCurrentTime(id, date, time);
+        return daoTicket.getAllTicketByUserIDAndCurrentTime(id, date);
     }
 
     @Override

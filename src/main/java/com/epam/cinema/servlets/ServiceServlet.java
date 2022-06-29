@@ -2,6 +2,7 @@ package com.epam.cinema.servlets;
 
 import com.epam.cinema.commands.CommandResolver;
 import com.epam.cinema.commands.ICommand;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -15,6 +16,7 @@ import java.io.IOException;
 )
 @WebServlet("/serviceServlet")
 public class ServiceServlet extends HttpServlet {
+    private static final Logger log = Logger.getLogger(ServiceServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
@@ -33,7 +35,7 @@ public class ServiceServlet extends HttpServlet {
         try {
             executor.open(req, resp);
         } catch (IOException | ServletException e) {
-            e.printStackTrace();
+            log.error(e);
         }
     }
 }

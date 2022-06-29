@@ -80,8 +80,6 @@ public class MySQLConstants {
         public static final String SQL_DELETE_SEATS_BY_ID = "DELETE FROM seats WHERE seat_id IN";
         public static final String SQL_ADD_SEAT = "INSERT INTO seats (auditorium_id, seat_row, seat_number) " +
                 "values(?, ?, ?)";
-        public static final String SQL_UPDATE_SEAT_BY_ID = "UPDATE seats SET " +
-                "auditorium_id=?, seat_row=?, seat_number=? WHERE seat_id=?;";
     }
 
     public static final class SeatReserved {
@@ -101,7 +99,7 @@ public class MySQLConstants {
         public static final String SQL_GET_ALL_TICKETS_BY_USER_ID = "SELECT * FROM tickets WHERE user_id=?;";
         public static final String SQL_GET_ALL_TICKETS_BY_USER_ID_AND_CURRENT_DATE = "SELECT * FROM cinema.tickets WHERE user_id=? AND seat_reserved_id IN\n" +
                 "(SELECT seat_reserved_id FROM cinema.seat_reserved WHERE screening_id IN\n" +
-                "(SELECT screening_id FROM cinema.screenings WHERE screening_date>=? AND screening_start_time>=?)) ";
+                "(SELECT screening_id FROM cinema.screenings WHERE screening_date>=?)) ";
         public static final String SQL_GET_ALL_TICKETS = "SELECT * FROM tickets";
         public static final String SQL_DELETE_TICKET_BY_ID = "DELETE FROM tickets WHERE ticket_id=?;";
         public static final String SQL_ADD_TICKET = "INSERT INTO tickets (user_id, seat_reserved_id) " +

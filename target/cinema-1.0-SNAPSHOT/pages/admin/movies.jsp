@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="${sessionScope.get('locale')}">
 <head>
     <title></title>
@@ -23,7 +23,7 @@
                 <h3>Movies:</h3>
             </div>
             <div class="float-end">
-                <label for="select-page">Movies Per Page</label>
+                <label for="select-page"><fmt:message key="label.moviesPerPage"/></label>
                 <select id="select-page" class="form-select-sm">
                     <option value="5">5</option>
                     <option value="10">10</option>
@@ -63,8 +63,8 @@
             </c:forEach>
         </div>
         <div class="ms-3">
-            <button class="btn-danger" id="previous" disabled>Previous</button>
-            <button class="btn-danger" id="next">Next</button>
+            <button class="btn-danger" id="previous" disabled><fmt:message key="button.previous"/></button>
+            <button class="btn-danger" id="next"><fmt:message key="button.next"/></button>
         </div>
     </div>
 </div>

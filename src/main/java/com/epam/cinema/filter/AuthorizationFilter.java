@@ -20,9 +20,10 @@ public class AuthorizationFilter extends HttpFilter {
     private static final String USER = "user";
     private static final String CINEMA_URI = "/cinema/";
     private static final String GUEST_REGEX = "registration,login,sign-in,sign-up";
-    private static final String USER_REGEX = "user,password,update-user,logout,buy-ticket";
-    private static final String ADMIN_REGEX = "admin,movie,movies,add-movie,auditorium,update-auditorium,update-seats";
-    private static final String COMMAND_REGEX = "main,validateLogin";
+    private static final String USER_REGEX = "user,password,update-user,logout,buy-ticket,validateLogin";
+    private static final String ADMIN_REGEX = "admin,movies,auditorium,a-movie,u-movie,u-schedule,add-movie," +
+            "update-auditorium,update-seats,update-movie,update-screening,delete-movie,delete-screening,validateMovieName";
+    private static final String COMMAND_REGEX = "main,screening";
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) {

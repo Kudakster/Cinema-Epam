@@ -14,10 +14,10 @@ public interface IAuditorium {
 
     List<Auditorium> findAllAuditoriums();
 
-    boolean addAuditorium(HttpServletRequest request);
+    boolean addAuditorium(Auditorium auditorium);
 
-    boolean updateAuditorium(HttpServletRequest request);
+    boolean updateAuditorium(Auditorium auditorium);
 
-    boolean deleteAuditorium(HttpServletRequest request);
+    boolean deleteAuditorium(Auditorium auditorium);
 }
 

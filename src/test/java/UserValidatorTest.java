@@ -18,21 +18,21 @@ public class UserValidatorTest {
     @Test
     public void userPasswordPatternTest() {
         user.setPassword("Werton12@");
-        Cookie cookie = Validation.validate(user);
-        assertEquals("", cookie.getValue());
+        String result = Validation.validate(user);
+        assertEquals("", result);
     }
 
     @Test
     public void userEmailPatternTest() {
         user.setEmail("email123@mail.com");
-        Cookie cookie = Validation.validate(user);
-        assertEquals("", cookie.getValue());
+        String result= Validation.validate(user);
+        assertEquals("", result);
     }
 
     @Test
     public void userPhoneNumberPatternTest() {
         user.setPhoneNumber("+380983214332");
-        Cookie cookie = Validation.validate(user);
-        assertEquals("", cookie.getValue());
+        String result= Validation.validate(user);
+        assertEquals("", result);
     }
 }

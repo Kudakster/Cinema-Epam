@@ -2,6 +2,8 @@ package com.epam.cinema.commands;
 
 import com.epam.cinema.enity.Movie;
 import com.epam.cinema.enity.Screening;
+import com.epam.cinema.enity.User;
+import com.epam.cinema.enity.enumeration.UserRole;
 import com.epam.cinema.service.implementation.ImageUploadingService;
 import com.epam.cinema.service.ServiceFactory;
 
@@ -14,7 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class RequestUtil {
-    public static Movie getMovieFromRequest(HttpServletRequest request) {
+    public Movie getMovieFromRequest(HttpServletRequest request) {
         String name = request.getParameter("movie-name");
         String actors = request.getParameter("actors");
         String direction = request.getParameter("direction");
@@ -28,7 +30,10 @@ public class RequestUtil {
         Date releaseDate = null;
         try {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            date = simpleDateFormat.parse(request.getParameter("release-date"));
+            String string = request.getParameter("release-date");
+            if (string != null) {
+                date = simpleDateFormat.parse(string);
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -51,7 +56,18 @@ public class RequestUtil {
         return movie;
     }
 
-    public static Screening getScreeningFromRequest(HttpServletRequest request) {
+    public User getUserFromRequest(HttpServletRequest request) {
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
+        String firstName = request.getParameter("firstname");
+        String surName = request.getParameter("surname");
+        String email = request.getParameter("email");
+        String phoneNumber = request.getParameter("phone-number");
+
+        return new User(login, password, firstName, surName, email, phoneNumber, UserRole.USER);
+    }
+
+    public Screening getScreeningFromRequest(HttpServletRequest request) {
         String screeningID = request.getParameter("screeningID");
         String movieName = request.getParameter("movie-name");
         String date = request.getParameter("date");
@@ -82,7 +98,4 @@ public class RequestUtil {
     private static Integer parseStringToInteger(String string) {
         return string != null ? Integer.valueOf(string) : null;
     }
-
-
-
 }

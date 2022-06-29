@@ -15,7 +15,7 @@ public class CommandDeleteScreening implements ICommand {
 
     @Override
     public Executor execute(HttpServletRequest request, HttpServletResponse response) {
-        Integer id = Integer.valueOf(request.getParameter("movie-id"));
+        Integer id = Integer.valueOf(request.getParameter("screening-id"));
         return new Redirect(ServiceFactory.getScreeningService().deleteScreeningByID(id), COMMAND, ERROR_COMMAND, ERROR_KEY);
     }
 }

@@ -11,7 +11,7 @@ public interface IDAOTicket<Ticket> {
 
     List<Ticket> getAllTicketByUserID(Integer userID);
 
-    List<Ticket> getAllTicketByUserIDAndCurrentTime(Integer userID, Date date, Time time);
+    List<Ticket> getAllTicketByUserIDAndCurrentTime(Integer userID, Date date);
 
     boolean addTicket(Ticket seat);
 

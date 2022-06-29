@@ -105,11 +105,11 @@
                     </ul>
                 </c:if>
 
-                <form class="w-25">
-                    <input type="search" class="form-control form-control-dark"
-                           placeholder="<fmt:message key="input.search"/>"
-                           aria-label="<fmt:message key="label.search"/>">
-                </form>
+<%--                <form class="w-25">--%>
+<%--                    <input type="search" class="form-control form-control-dark"--%>
+<%--                           placeholder="<fmt:message key="input.search"/>"--%>
+<%--                           aria-label="<fmt:message key="label.search"/>">--%>
+<%--                </form>--%>
 
                 <c:choose>
                     <c:when test="${sessionScope.user.userRole.toString() == 'USER' ||
@@ -157,14 +157,14 @@
                 <form id="locale-form" action="${pageContext.request.contextPath}${pageName}" method="post">
                     <c:if test="${sessionScope.get('locale') == 'en'}">
                         <select name="locale" id="select-lang" class="ms-2">
-                            <option value="<fmt:message key="lang.en"/>"><fmt:message key="lang.en"/></option>
-                            <option value="<fmt:message key="lang.ua"/>"><fmt:message key="lang.ua"/></option>
+                            <option value="en"><fmt:message key="lang.en"/></option>
+                            <option value="ua"><fmt:message key="lang.ua"/></option>
                         </select>
                     </c:if>
                     <c:if test="${sessionScope.get('locale') == 'ua'}">
                         <select name="locale" id="select-lang" class="ms-2">
-                            <option value="<fmt:message key="lang.ua"/>"><fmt:message key="lang.ua"/></option>
-                            <option value="<fmt:message key="lang.en"/>"><fmt:message key="lang.en"/></option>
+                            <option value="ua"><fmt:message key="lang.ua"/></option>
+                            <option value="en"><fmt:message key="lang.en"/></option>
                         </select>
                     </c:if>
                 </form>

@@ -47,8 +47,8 @@ public class DAOTicketImpl extends DAOGeneral<Ticket> implements IDAOTicket<Tick
     }
 
     @Override
-    public List<Ticket> getAllTicketByUserIDAndCurrentTime(Integer userID, Date date, Time time) {
-        return getAllBy(MySQLConstants.Ticket.SQL_GET_ALL_TICKETS_BY_USER_ID_AND_CURRENT_DATE,userID, date.toString(), time.toString());
+    public List<Ticket> getAllTicketByUserIDAndCurrentTime(Integer userID, Date date) {
+        return getAllBy(MySQLConstants.Ticket.SQL_GET_ALL_TICKETS_BY_USER_ID_AND_CURRENT_DATE, userID, date.toString());
     }
 
     @Override

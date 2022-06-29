@@ -28,21 +28,19 @@
                 <a class="section-reference" href="#movie" id="movie">Movie</a>
             </div>
             <ul class="justify-content-center rounded mx-4">
-                <li><a class="header-reference mb-3 bg-dark rounded-3" href="#a-movie" id="a-movie">Add Movie</a>
+                <li><a class="header-reference mb-3 bg-dark rounded-3" href="#a-movie" id="a-movie"><fmt:message key="label.addMovie"/></a>
                 </li>
-                <li><a class="header-reference mb-3 bg-dark rounded-3" href="#u-schedule" id="u-schedule">Schedule</a>
-                </li>
-                <li><a class="header-reference mb-3 bg-dark rounded-3" href="#">Top Movies</a>
+                <li><a class="header-reference mb-3 bg-dark rounded-3" href="#u-schedule" id="u-schedule"><fmt:message key="label.schedule"/></a>
                 </li>
             </ul>
 
             <div class="text-start text-white ps-2 my-2">
-                <a class="section-reference" href="#auditorium" id="auditorium">Auditorium</a>
+                <a class="section-reference" href="#auditorium" id="auditorium"><fmt:message key="label.auditorium"/></a>
             </div>
             <ul class="justify-content-center rounded mx-4">
-                <li><a class="header-reference mb-3 bg-dark rounded-3" href="#">Current Session</a>
+                <li><a class="header-reference mb-3 bg-dark rounded-3" href="#"><fmt:message key="label.currentSession"/></a>
                 </li>
-                <li><a class="header-reference mb-3 bg-dark rounded-3" href="#">Statistics</a>
+                <li><a class="header-reference mb-3 bg-dark rounded-3" href="#"><fmt:message key="label.statistic"/></a>
                 </li>
             </ul>
         </div>

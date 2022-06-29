@@ -25,48 +25,48 @@
 <body>
 <div class="d-flex align-items-start margin-header">
     <div class="d-inline-block container mt-3 w-25 ms-5 me-0">
-        <h3 class="align-items-center">My Profile</h3>
+        <h3 class="align-items-center"><fmt:message key="label.myProfile"/></h3>
 
         <form action="${pageContext.request.contextPath}/cinema/update-user" method="post" id="basic-form">
 
             <div class="mb-3 mt-3" id="login-form">
-                <label for="login" class="form-label">Login:</label>
-                <input type="text" class="form-control" id="login" data-val="${sessionScope.user.login}" placeholder="Enter username" name="login"
+                <label for="login" class="form-label"><fmt:message key="label.login"/></label>
+                <input type="text" class="form-control" id="login" data-val="${sessionScope.user.login}" placeholder="<fmt:message key="placeholder.enter.login"/>" name="login"
                        maxlength="30" value=${sessionScope.user.login}>
             </div>
 
             <div class="mb-3 mt-3" id="firstname-form">
-                <label for="firstname" class="form-label">Firstname:</label>
-                <input type="text" class="form-control" id="firstname" placeholder="Enter Firstname" name="firstname"
+                <label for="firstname" class="form-label"><fmt:message key="label.firstname"/></label>
+                <input type="text" class="form-control" id="firstname" placeholder="<fmt:message key="placeholder.enter.firstname"/>" name="firstname"
                        maxlength="30" value=${sessionScope.user.firstName}>
             </div>
 
             <div class="mb-3 mt-3" id="surname-form">
-                <label for="surname" class="form-label">Surname:</label>
-                <input type="text" class="form-control" id="surname" placeholder="Enter Surname" name="surname"
+                <label for="surname" class="form-label"><fmt:message key="label.surname"/></label>
+                <input type="text" class="form-control" id="surname" placeholder="<fmt:message key="placeholder.enter.surname"/>" name="surname"
                        maxlength="30" value=${sessionScope.user.surName}>
             </div>
 
             <div class="mb-3 mt-3" id="email-form">
-                <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email"
+                <label for="email" class="form-label"><fmt:message key="label.email"/></label>
+                <input type="email" class="form-control" id="email" placeholder="<fmt:message key="placeholder.enter.email"/>" name="email"
                        disabled value=${sessionScope.user.email}>
             </div>
 
             <div class="mb-3 mt-3" id="phone-number-form">
-                <label for="phone-number" class="form-label">Phone-number:</label>
-                <input type="text" class="form-control" id="phone-number" placeholder="Enter phone-number"
+                <label for="phone-number" class="form-label"><fmt:message key="label.phoneNumber"/></label>
+                <input type="text" class="form-control" id="phone-number" placeholder="<fmt:message key="placeholder.enter.phoneNumber"/>"
                        name="phone-number" maxlength="13" disabled
                        value=${sessionScope.user.phoneNumber}>
             </div>
 
             <button type="submit" class="btn btn-primary" id="submit-button" disabled>
-                Update Profile
+                <fmt:message key="button.updateProfile"/>
             </button>
         </form>
     </div>
     <div class="d-inline-block container mt-3 w-25 ms-5 me-0">
-        <h3>Tickets:</h3>
+        <h3><fmt:message key="h.tickets"/></h3>
         <c:forEach items="${requestScope.ticketList}" var="ticket">
             <span>${requestScope.auditoriumMap.get(ticket).auditoriumName}</span>
             <br>

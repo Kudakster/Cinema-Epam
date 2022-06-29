@@ -16,7 +16,7 @@ public interface IUserService {
 
     User findUserByLogin(String login);
 
-    User verifyUser(User user);
+    User verifyUserAndReturnUser(User user);
 
     boolean addUser(User user);
 

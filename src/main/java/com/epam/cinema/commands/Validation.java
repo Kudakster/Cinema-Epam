@@ -1,24 +1,19 @@
 package com.epam.cinema.commands;
 
-import com.epam.cinema.config.Configuration;
 import com.epam.cinema.enity.Auditorium;
 import com.epam.cinema.enity.Entity;
 import com.epam.cinema.service.ServiceFactory;
 
-import javax.servlet.http.Cookie;
 import javax.validation.ConstraintViolation;
 import javax.validation.ValidatorFactory;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.sql.Time;
 import java.util.Objects;
 import java.util.Set;
 
 public class Validation {
-    public static Cookie validate(Entity entity) {
+    public static String validate(Entity entity) {
         ValidatorFactory factory = javax.validation.Validation.buildDefaultValidatorFactory();
         javax.validation.Validator validator = factory.getValidator();
-        Cookie cookie = new Cookie("error", "");
         String result = "";
 
         Set<ConstraintViolation<Entity>> violations = validator.validate(entity);
@@ -26,11 +21,7 @@ public class Validation {
             result = cons.getMessage();
         }
 
-        if (!Objects.equals(result, "")) {
-            cookie.setValue(URLEncoder.encode((Configuration.getInstance().getError(result)), StandardCharsets.UTF_8));
-        }
-
-        return cookie;
+        return result;
     }
 
     public static String isLoginAvailable(String login) {

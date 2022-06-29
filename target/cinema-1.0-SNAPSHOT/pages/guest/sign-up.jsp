@@ -14,7 +14,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/sign-up.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/validateLogin.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/setFormStatus.js" type="text/javascript"></script>
 
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">

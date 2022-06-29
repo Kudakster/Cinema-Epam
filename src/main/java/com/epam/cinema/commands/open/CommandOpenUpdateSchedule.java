@@ -1,6 +1,5 @@
 package com.epam.cinema.commands.open;
 
-import com.epam.cinema.commands.CookieUtil;
 import com.epam.cinema.commands.ICommand;
 import com.epam.cinema.enity.Movie;
 import com.epam.cinema.enity.Screening;

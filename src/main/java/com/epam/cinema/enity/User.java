@@ -38,6 +38,7 @@ public class User extends Entity {
     @Size(min = 13, max = 13,
             message = "user.size.phoneNumber")
     private String phoneNumber;
+
     private UserRole userRole;
 
     public User(String login, String password, String firstName, String surName, String email, String phoneNumber, UserRole userRole) {

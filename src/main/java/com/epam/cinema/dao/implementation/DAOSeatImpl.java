@@ -80,7 +80,7 @@ public class DAOSeatImpl extends DAOGeneral<Seat> implements IDAOSeat<Seat> {
             if (i == 0) {
                 SQL_QUERY = SQL_QUERY.concat("(?");
             } else if (i == seatList.size() - 1) {
-                SQL_QUERY = SQL_QUERY.concat(" ,?)");
+                SQL_QUERY = SQL_QUERY.concat(" ,?);\n");
             } else {
                 SQL_QUERY = SQL_QUERY.concat(" ,?");
             }

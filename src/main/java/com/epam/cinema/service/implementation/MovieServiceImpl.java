@@ -7,7 +7,7 @@ import com.epam.cinema.service.IMovieService;
 import java.util.List;
 
 public class MovieServiceImpl implements IMovieService {
-    private final DAOMovieImpl daoMovie;
+    private DAOMovieImpl daoMovie;
     private static MovieServiceImpl instance = null;
 
     public MovieServiceImpl() {
@@ -68,5 +68,9 @@ public class MovieServiceImpl implements IMovieService {
         if (instance == null)
             instance = new MovieServiceImpl();
         return instance;
+    }
+
+    public static void setInstance(MovieServiceImpl instance) {
+        MovieServiceImpl.instance = instance;
     }
 }

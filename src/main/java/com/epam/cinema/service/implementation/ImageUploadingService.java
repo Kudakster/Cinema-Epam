@@ -1,25 +1,25 @@
 package com.epam.cinema.service.implementation;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
 
 public class ImageUploadingService {
-    public static String uploadImage(HttpServletRequest request, String elementName) {
-        Part filePart = null;
-        String fileName = ResourceBundle.getBundle("locale_storage_img").getString("movieImg");
+    private static final ResourceBundle localeStorageImgBundle = ResourceBundle.getBundle("locale_storage_img");
+
+    public static String uploadImage(Part filePart, Part[] parts) {
+        String fileName = filePart.getSubmittedFileName();
+        String file = localeStorageImgBundle.getString("movieImg").concat(fileName);
+
         try {
-            filePart = request.getPart(elementName);
-            fileName += filePart.getSubmittedFileName();
-            for (Part part : request.getParts()) {
-                part.write(fileName);
+            for (Part part : parts) {
+                part.write(file);
             }
-        } catch (IOException | ServletException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return ResourceBundle.getBundle("locale_storage_img").getString("movieImgRelative") + filePart.getSubmittedFileName();
+
+        return localeStorageImgBundle.getString("movieImgRelative").concat(fileName);
     }
 }

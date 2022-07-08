@@ -2,10 +2,10 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
 <fmt:setLocale value="${sessionScope.get('locale')}"/>
 <fmt:setBundle basename="messages"/>
-
 <!doctype html>
 <html lang="${sessionScope.get('locale')}">
 <head>
@@ -50,22 +50,7 @@
 <header class="px-3 bg-dark text-white">
     <div class="container-header">
         <div class="d-flex flex-wrap align-items-center justify-content-center-max-620">
-            <c:choose>
-                <c:when test="${pageName == 'main'}">
-                    <img class="button-logo" src="${pageContext.request.contextPath}/image/cinema-logo.svg"
-                         width="48"
-                         height="48" alt="Cinema Logo">
-                </c:when>
-                <c:otherwise>
-                    <form class="text-end" method="get" action="${pageContext.request.contextPath}/cinema/main">
-                        <button class="button-logo" type="submit">
-                            <img src="${pageContext.request.contextPath}/image/cinema-logo.svg"
-                                 width="48"
-                                 height="48" alt="Cinema Logo">
-                        </button>
-                    </form>
-                </c:otherwise>
-            </c:choose>
+            <t:tagLogo/>
 
             <ul class="nav justify-content-start mb-md-0 ht-1" id="ref">
                 <li><a href="${pageContext.request.contextPath}/cinema/main"
@@ -94,22 +79,26 @@
                     <ul class="nav justify-content-start mb-md-0 ht-1 me-2">
                         <li>
                             <form action="${pageContext.request.contextPath}/cinema/main">
-                                <select name="date" class="header-reference" onchange="this.form.submit()">Date
-                                    <option>Date:</option>
+                                <select name="date" class="d-inline-block header-reference" onchange="this.form.submit()">Date
+                                    <option value="${requestScope.date}">Date:</option>
                                     <c:forEach items="${requestScope.dates}" var="date">
                                         <option value="${date}">${date}</option>
                                     </c:forEach>
+                                </select>
+                                <select name="orderBy" class="d-inline-block header-reference" onchange="this.form.submit()">
+                                    <option value="${requestScope.orderBy}">Order By:</option>
+                                    <option value="screening_start_time">Start Time</option>
+                                    <option value="movie_name">Movie Name</option>
+                                </select>
+                                <select name="direction" class="d-inline-block header-reference" onchange="this.form.submit()">
+                                    <option value="${requestScope.direction}">Direction:</option>
+                                    <option value="ASC">Asc</option>
+                                    <option value="DESC">Desc</option>
                                 </select>
                             </form>
                         </li>
                     </ul>
                 </c:if>
-
-<%--                <form class="w-25">--%>
-<%--                    <input type="search" class="form-control form-control-dark"--%>
-<%--                           placeholder="<fmt:message key="input.search"/>"--%>
-<%--                           aria-label="<fmt:message key="label.search"/>">--%>
-<%--                </form>--%>
 
                 <c:choose>
                     <c:when test="${sessionScope.user.userRole.toString() == 'USER' ||

@@ -2,6 +2,7 @@ package com.epam.cinema.enity;
 
 import javax.validation.constraints.Size;
 import java.sql.Date;
+import java.util.Objects;
 
 public class Movie extends Entity {
     private Integer id;
@@ -112,6 +113,19 @@ public class Movie extends Entity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return Objects.equals(id, movie.id) && name.equals(movie.name) && actors.equals(movie.actors) && direction.equals(movie.direction) && genre.equals(movie.genre) && country.equals(movie.country) && trailerURL.equals(movie.trailerURL) && imgURL.equals(movie.imgURL) && releaseDate.equals(movie.releaseDate) && durationMin.equals(movie.durationMin) && description.equals(movie.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, actors, direction, genre, country, trailerURL, imgURL, releaseDate, durationMin, description);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.epam.cinema.commands;
 
-import com.epam.cinema.enity.Auditorium;
 import com.epam.cinema.enity.Entity;
 import com.epam.cinema.service.ServiceFactory;
 
@@ -24,40 +23,18 @@ public class Validation {
         return result;
     }
 
-    public static String isLoginAvailable(String login) {
-        if (ServiceFactory.getUserService().findUserByLogin(login) != null) {
-            return "Sorry, " + login + " login is already taken";
-        }
-        return null;
-    }
-
-    public static Integer validAndGetAuditoriumID(String auditoriumName) {
-        if (auditoriumName == null) {
-            return null;
-        }
-
-        Auditorium auditorium = ServiceFactory.getAuditoriumService().findAuditoriumByName(auditoriumName);
-        if (auditorium != null) {
-            return auditorium.getAuditoriumID();
-        }
-
-        return null;
-    }
-
     public static boolean isMovieExist(String name) {
         return ServiceFactory.getMovieService().findMovieByName(name) != null;
     }
 
-    public static boolean isDurationCorrectly(String name, String startTime, String endTime) {
-        String min = ServiceFactory.getMovieService().findMovieByName(name).getDurationMin();
+    public static boolean isDurationCorrectly(Integer id, Time startTime, Time endTime) {
+        String min = ServiceFactory.getMovieService().findMovieById(id).getDurationMin();
 
         if (Objects.equals(min, "")) {
             return false;
         }
 
-        Integer durationMin = Integer.valueOf(min);
-        Time start = Time.valueOf(startTime.substring(0, 5).concat(":00"));
-        Time end = Time.valueOf(endTime.substring(0, 5).concat(":00"));
-        return end.getTime() - start.getTime() >= durationMin * 60000;
+        int durationMin = Integer.parseInt(min);
+        return endTime.getTime() - startTime.getTime() >= durationMin * 60000L;
     }
 }

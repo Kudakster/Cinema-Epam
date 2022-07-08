@@ -25,14 +25,14 @@ public class UserValidatorTest {
     @Test
     public void userEmailPatternTest() {
         user.setEmail("email123@mail.com");
-        String result= Validation.validate(user);
+        String result = Validation.validate(user);
         assertEquals("", result);
     }
 
     @Test
     public void userPhoneNumberPatternTest() {
         user.setPhoneNumber("+380983214332");
-        String result= Validation.validate(user);
+        String result = Validation.validate(user);
         assertEquals("", result);
     }
 }

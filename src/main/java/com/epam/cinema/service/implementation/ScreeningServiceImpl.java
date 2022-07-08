@@ -9,7 +9,9 @@ import com.epam.cinema.service.ServiceFactory;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.*;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.toList;
 
 public class ScreeningServiceImpl implements IScreeningService {
     private DAOScreeningImpl daoScreening;
@@ -40,8 +42,8 @@ public class ScreeningServiceImpl implements IScreeningService {
     }
 
     @Override
-    public List<Screening> findScreeningsByDate(Date date, Time time) {
-        return daoScreening.getScreeningsByDate(date, time);
+    public List<Screening> findScreeningsByDate(Date date, Time time, String orderBy, String direction) {
+        return daoScreening.getScreeningsByDate(date, time, orderBy, direction);
     }
 
     @Override
@@ -60,7 +62,7 @@ public class ScreeningServiceImpl implements IScreeningService {
             return false;
         }
 
-        List<Screening> screenings = daoScreening.getScreeningsByDate(screening.getDate(), screening.getStartTime());
+        List<Screening> screenings = daoScreening.getScreeningsByDate(screening.getDate(), screening.getStartTime(), "screening_start_time", "ASC");
 
         boolean result = true;
         if (screenings != null) {
@@ -72,7 +74,7 @@ public class ScreeningServiceImpl implements IScreeningService {
 
     @Override
     public boolean updateScreening(Screening screening) {
-        List<Screening> screenings = daoScreening.getScreeningsByDate(screening.getDate(), new Time(0));
+        List<Screening> screenings = daoScreening.getScreeningsByDate(screening.getDate(), new Time(0), "screening_start_time", "ASC");
         boolean result = false;
         if (screenings != null) {
             screenings.removeIf(sc -> sc.getScreeningID().equals(screening.getScreeningID()));
@@ -95,26 +97,19 @@ public class ScreeningServiceImpl implements IScreeningService {
         List<Screening> screeningList = findScreeningsByDatesWithPagination(missedDays, numberOfDays);
 
         if (screeningList == null) {
-            return new HashMap<>();
+            return new TreeMap<>();
         }
 
         return new TreeMap<>(screeningList
                 .stream()
-                .collect(Collectors.groupingBy(Screening::getDate)));
+                .collect(groupingBy(Screening::getDate)));
     }
 
-    public Map<Movie, List<Screening>> getGroupedMapScreeningByMovie(Date date) {
-        Map<Movie, List<Screening>> map = new LinkedHashMap<>();
+    public Map<Movie, List<Screening>> getGroupedMapScreeningByMovie(Date date, String orderBy, String direction) {
         MovieServiceImpl movieService = ServiceFactory.getMovieService();
-        List<Screening> screeningList = findScreeningsByDate(date, new Time(date.getTime()));
+        List<Screening> screeningList = findScreeningsByDate(date, new Time(date.getTime()), orderBy, direction);
 
-        if (screeningList != null) {
-            screeningList.stream()
-                    .collect(Collectors.groupingBy(Screening::getMovieID))
-                    .forEach((key, value) -> map.put(movieService.findMovieById(key), value));
-        }
-        sortByValue(map);
-        return map;
+        return screeningList != null ? screeningList.stream().collect(groupingBy(screening -> movieService.findMovieById(screening.getMovieID()), LinkedHashMap::new, toList())) : null;
     }
 
     private boolean isTimeAvailable(Screening screening, Time startTime, Time endTime) {
@@ -122,20 +117,6 @@ public class ScreeningServiceImpl implements IScreeningService {
                 screening.getEndTime().getTime() < startTime.getTime()) ||
                 (screening.getStartTime().getTime() > endTime.getTime() &&
                         screening.getEndTime().getTime() > endTime.getTime());
-    }
-
-    private static void sortByValue(Map<Movie, List<Screening>> map) {
-        List<Map.Entry<Movie, List<Screening>>> list = new LinkedList<>(map.entrySet());
-        list.sort(Map.Entry.comparingByValue((o1, o2) -> {
-            if (o1.get(0).getStartTime().getTime() > o2.get(0).getStartTime().getTime()) {
-                return 1;
-            } else if (o1.get(0).getStartTime().getTime() < o2.get(0).getStartTime().getTime()) {
-                return -1;
-            }
-            return 0;
-        }));
-        map.clear();
-        list.forEach(e -> map.put(e.getKey(), e.getValue()));
     }
 
     public static ScreeningServiceImpl getInstance() {

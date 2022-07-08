@@ -47,3 +47,4 @@
 29-06-2022 09:14:47 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
 29-06-2022 09:16:19 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
 29-06-2022 10:03:46 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
+08-07-2022 17:39:08 ERROR DAOGeneral.deleteMany, line 175 -> java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`cinema`.`seat_reserved`, CONSTRAINT `seat_reserved_ibfk_1` FOREIGN KEY (`seat_id`) REFERENCES `seats` (`seat_id`))

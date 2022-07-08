@@ -10,6 +10,7 @@ import com.epam.cinema.servlets.Redirect;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 public class CommandAddScreening implements ICommand {
     private RequestUtil requestUtil = new RequestUtil();
@@ -17,7 +18,6 @@ public class CommandAddScreening implements ICommand {
     private final String ERROR_COMMAND = "admin";
     private final String ERROR_KEY = "screening.update.error";
     private final String ERROR_KEY_DURATION = "screening.update.duration";
-    private final String ERROR_KEY_TIME_NOT_CORRECT = "screening.update.time";
 
     @Override
     public Executor execute(HttpServletRequest request, HttpServletResponse response) {
@@ -26,12 +26,14 @@ public class CommandAddScreening implements ICommand {
         }
 
         Screening screening = requestUtil.getScreeningFromRequest(request);
+        String error = Validation.validate(screening);
 
-        if (screening.getStartTime().getTime() > screening.getEndTime().getTime()) {
-            return new Redirect(false, COMMAND, ERROR_COMMAND, ERROR_KEY_TIME_NOT_CORRECT);
+        if (!Objects.equals(error, "")) {
+            return new Redirect(ERROR_COMMAND, error);
         }
 
-        if (!Validation.isDurationCorrectly(request.getParameter("movie-name"), request.getParameter("startTime"), request.getParameter("endTime"))) {
+
+        if (!Validation.isDurationCorrectly(screening.getMovieID(), screening.getStartTime(), screening.getEndTime())) {
             return new Redirect(false, COMMAND, ERROR_COMMAND, ERROR_KEY_DURATION);
         }
 

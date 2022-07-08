@@ -18,4 +18,6 @@ public interface IDAOTicket<Ticket> {
     boolean updateTicketByID(Ticket seat);
 
     boolean deleteTicket(Ticket seat);
+
+    int countTickets(Date date);
 }

@@ -13,7 +13,6 @@ C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\commands\op
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\commands\open\CommandOpenAuditoriumPage.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\service\implementation\ScreeningServiceImpl.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\commands\CommandValidateLogin.java
-C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\commands\update\CommandUpdateSchedule.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\commands\update\CommandUpdateAuditorium.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\filter\CharsetFilter.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\commands\open\CommandOpenLoginPage.java
@@ -40,7 +39,6 @@ C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\service\imp
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\commands\add\CommandAddScreening.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\commands\open\CommandOpenMainPage.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\filter\AuthorizationFilter.java
-C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\commands\update\CommandUpdateScreening.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\dao\IDAOMovie.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\enity\SeatReserved.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\service\implementation\AuditoriumServiceImpl.java
@@ -68,7 +66,6 @@ C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\commands\up
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\enity\Ticket.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\commands\delete\CommandDeleteScreening.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\service\implementation\SeatReservedServiceImpl.java
-C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\commands\open\CommandOpenChangePasswordPage.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\enity\Auditorium.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\dao\implementation\DAOUserImpl.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\main\java\com\epam\cinema\service\IAuditorium.java

@@ -22,7 +22,6 @@ public class CommandValidateUser implements ICommand {
         String password = request.getParameter("password");
 
         User user = new User(login, password);
-
         String error = Validation.validate(user);
 
         if (!Objects.equals(error, "")) {
@@ -30,10 +29,12 @@ public class CommandValidateUser implements ICommand {
         }
 
         User userFromDB = ServiceFactory.getUserService().verifyUserAndReturnUser(user);
-        boolean result = userFromDB != null;
 
-        request.getSession().setAttribute("date", new Date(System.currentTimeMillis()));
+        if (userFromDB == null) {
+            return new Redirect(ERROR_COMMAND, ERROR_KEY);
+        }
+//        request.getSession().setAttribute("date", new Date(System.currentTimeMillis()));
         request.getSession().setAttribute("user", userFromDB);
-        return new Redirect(result, COMMAND, ERROR_COMMAND, ERROR_KEY);
+        return new Redirect(COMMAND);
     }
 }

@@ -1,6 +1,12 @@
-MovieServiceImplTest.class
-ScreeningServiceImplTest.class
+com\epam\cinema\service\SeatReservedServiceTest.class
+com\epam\cinema\command\AddCommandTest.class
+com\epam\cinema\service\MovieServiceTest.class
+com\epam\cinema\service\ScreeningServiceTest.class
+com\epam\cinema\command\OpenCommandTest.class
+com\epam\cinema\service\AuditoriumServiceTest.class
 UserValidatorTest.class
-MySQLConnectionTest.class
-service\UserServiceTest.class
-UserServiceImplTest.class
+com\epam\cinema\service\SeatServiceTest.class
+com\epam\cinema\service\TicketServiceTest.class
+com\epam\cinema\command\DeleteCommandTest.class
+com\epam\cinema\command\UpdateCommandTest.class
+com\epam\cinema\service\UserServiceTest.class

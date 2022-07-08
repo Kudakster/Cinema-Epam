@@ -1,6 +1,12 @@
-C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\ScreeningServiceImplTest.java
-C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\MovieServiceImplTest.java
-C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\UserServiceImplTest.java
+C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\com\epam\cinema\command\OpenCommandTest.java
+C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\com\epam\cinema\service\UserServiceTest.java
+C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\com\epam\cinema\service\TicketServiceTest.java
+C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\com\epam\cinema\command\AddCommandTest.java
+C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\com\epam\cinema\command\UpdateCommandTest.java
+C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\com\epam\cinema\service\MovieServiceTest.java
+C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\com\epam\cinema\service\ScreeningServiceTest.java
+C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\com\epam\cinema\service\SeatServiceTest.java
 C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\UserValidatorTest.java
-C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\MySQLConnectionTest.java
-C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\service\UserServiceTest.java
+C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\com\epam\cinema\command\DeleteCommandTest.java
+C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\com\epam\cinema\service\AuditoriumServiceTest.java
+C:\Users\Kudakster\IdeaProjects\cinema\src\test\java\com\epam\cinema\service\SeatReservedServiceTest.java

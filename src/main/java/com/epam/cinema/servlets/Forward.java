@@ -34,7 +34,6 @@ public class Forward implements Executor {
         } else {
             request.getRequestDispatcher(Configuration.getInstance().getPage(errorPage)).forward(request, response);
         }
-
     }
 
     public boolean isValid() {

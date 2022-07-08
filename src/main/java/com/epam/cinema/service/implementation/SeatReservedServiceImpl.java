@@ -3,8 +3,10 @@ package com.epam.cinema.service.implementation;
 import com.epam.cinema.dao.implementation.DAOSeatReservedImpl;
 import com.epam.cinema.enity.SeatReserved;
 import com.epam.cinema.service.ISeatReservedService;
+import com.epam.cinema.service.ServiceFactory;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SeatReservedServiceImpl implements ISeatReservedService {
     private DAOSeatReservedImpl daoSeatReserved;
@@ -39,6 +41,15 @@ public class SeatReservedServiceImpl implements ISeatReservedService {
         return daoSeatReserved.addSeat(seatReserved);
     }
 
+    public List<SeatReserved> addSeatsReserved(List<Integer> seatID, Integer screeningID) {
+       seatID.forEach(id -> ServiceFactory.getSeatReservedService().addSeatReserved(new SeatReserved(id, screeningID)));
+
+        return seatID.stream()
+                .map(id -> ServiceFactory.getSeatReservedService()
+                        .findSeatReservedBySeatIDAndScreeningID(id, screeningID))
+                .collect(Collectors.toList());
+    }
+
     @Override
     public boolean deleteSeatReserved(SeatReserved seatReserved) {
         return daoSeatReserved.deleteSeat(seatReserved);
@@ -46,6 +57,10 @@ public class SeatReservedServiceImpl implements ISeatReservedService {
 
     public boolean isSeatReservedExist(Integer seatID, Integer screeningID) {
         return findSeatReservedBySeatIDAndScreeningID(seatID, screeningID) != null;
+    }
+
+    public boolean isSeatsReservedNoneExists(List<Integer> seatID, Integer screeningID) {
+        return seatID.stream().noneMatch(id -> ServiceFactory.getSeatReservedService().isSeatReservedExist(id, screeningID));
     }
 
     public static SeatReservedServiceImpl getInstance() {

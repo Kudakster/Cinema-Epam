@@ -41,7 +41,6 @@ public class CommandOpenUserPage implements ICommand {
             request.setAttribute("seatMap", seatMap);
             request.setAttribute("screeningMap", screeningMap);
         }
-
         return new Forward(PAGE);
     }
 }

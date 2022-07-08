@@ -15,7 +15,7 @@ public interface IDAOScreening<Screening> {
 
     List<Screening> getScreeningsByPagination(Integer missedScreenings, Integer numberScreenings);
 
-    List<Screening> getScreeningsByDate(Date date, Time time);
+    List<Screening> getScreeningsByDate(Date date, Time time, String orderBy, String direction);
 
     List<Screening> getScreeningsByDatesWithPagination(Integer missedScreenings, Integer numberScreenings);
 

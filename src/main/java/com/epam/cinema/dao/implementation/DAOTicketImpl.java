@@ -65,4 +65,9 @@ public class DAOTicketImpl extends DAOGeneral<Ticket> implements IDAOTicket<Tick
     public boolean deleteTicket(Ticket ticket) {
         return delete(ticket.getTicketID(), MySQLConstants.Ticket.SQL_DELETE_TICKET_BY_ID);
     }
+
+    @Override
+    public int countTickets(Date date) {
+        return count(MySQLConstants.Ticket.SQL_COUNT_TICKETS, date.toString());
+    }
 }

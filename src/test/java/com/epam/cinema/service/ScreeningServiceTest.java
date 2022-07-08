@@ -88,10 +88,10 @@ public class ScreeningServiceTest {
         screening.setAuditoriumID(1);
         screening.setStartTime(new Time(System.currentTimeMillis() - 3600000L * 4));
 
-        given(daoScreening.getScreeningsByDate(screening.getDate(), screening.getStartTime()))
+        given(daoScreening.getScreeningsByDate(screening.getDate(), screening.getStartTime(),  "screening_start_time", "ASK"))
                 .willReturn(List.of(screening, anotherScreening));
 
-        List<Screening> screenings = screeningService.findScreeningsByDate(screening.getDate(), screening.getStartTime());
+        List<Screening> screenings = screeningService.findScreeningsByDate(screening.getDate(), screening.getStartTime(), "screening_start_time", "ASK");
         assertThat(screenings).isNotNull();
         assertThat(screenings.size()).isEqualTo(2);
     }

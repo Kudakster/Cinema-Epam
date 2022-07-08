@@ -3,6 +3,7 @@ package com.epam.cinema.command;
 import com.epam.cinema.commands.RequestUtil;
 import com.epam.cinema.commands.update.CommandUpdateAuditorium;
 import com.epam.cinema.commands.update.CommandUpdateMovie;
+import com.epam.cinema.commands.update.CommandUpdateSeats;
 import com.epam.cinema.commands.update.CommandUpdateUser;
 import com.epam.cinema.enity.Auditorium;
 import com.epam.cinema.enity.Movie;
@@ -10,6 +11,7 @@ import com.epam.cinema.enity.Screening;
 import com.epam.cinema.enity.User;
 import com.epam.cinema.service.implementation.AuditoriumServiceImpl;
 import com.epam.cinema.service.implementation.MovieServiceImpl;
+import com.epam.cinema.service.implementation.SeatServiceImpl;
 import com.epam.cinema.service.implementation.UserServiceImpl;
 import com.epam.cinema.servlets.Redirect;
 import org.junit.jupiter.api.Test;
@@ -21,6 +23,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.atLeast;
@@ -45,6 +50,9 @@ public class UpdateCommandTest {
 
     @InjectMocks
     private CommandUpdateUser commandUpdateUser;
+
+    @InjectMocks
+    private CommandUpdateSeats commandUpdateSeats;
 
     @Test
     public void givenUpdateAuditoriumCommand_whenUpdateAuditoriumIsTrue_thenReturnRedirect() {
@@ -98,5 +106,23 @@ public class UpdateCommandTest {
         Redirect redirect = (Redirect) commandUpdateUser.execute(request, response);
         assertThat(redirect.isValid()).isTrue();
         assertThat(redirect.getCommand()).isEqualTo("user");
+    }
+
+    @Test
+    public void givenUpdateSeatsCommand_whenUpdateSeatsIsTrue_thenReturnRedirect() {
+        SeatServiceImpl instance = mock(SeatServiceImpl.class);
+        SeatServiceImpl.setInstance(instance);
+
+        Map<String, String[]> map = new HashMap<>();
+        map.put("seat-number", new String[]{"1"});
+
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("auditorium")).thenReturn(new Auditorium());
+        when(request.getParameterMap()).thenReturn(map);
+        when(instance.updateSeats(anyList())).thenReturn(true);
+
+        Redirect redirect = (Redirect) commandUpdateSeats.execute(request, response);
+        assertThat(redirect.isValid()).isTrue();
+        assertThat(redirect.getCommand()).isEqualTo("admin");
     }
 }

@@ -23,18 +23,28 @@ public class CommandOpenMainPage implements ICommand {
     @Override
     public Executor execute(HttpServletRequest request, HttpServletResponse response) {
         String date = request.getParameter("date");
-        Date dateFromRequest;
-        Date currentDate = new Date(CURRENT_DAY);
+        String orderBy = request.getParameter("orderBy");
+        String direction = request.getParameter("direction");
+        Date dateFromRequest = new Date(CURRENT_DAY);
 
-        if (StringUtils.isEmpty(date) || date.equals(currentDate.toString())) {
-            dateFromRequest = currentDate;
-        } else {
+        if (!StringUtils.isEmpty(date)) {
             dateFromRequest = Date.valueOf(date);
         }
 
-        Map<Movie, List<Screening>> screenings = ServiceFactory.getScreeningService().getGroupedMapScreeningByMovie(dateFromRequest);
+        if (StringUtils.isEmpty(orderBy)) {
+            orderBy = "screening_start_time";
+        }
+
+        if (StringUtils.isEmpty(direction)) {
+            direction = "ASC";
+        }
+
+        Map<Movie, List<Screening>> screenings = ServiceFactory.getScreeningService().getGroupedMapScreeningByMovie(dateFromRequest, orderBy, direction);
         List<Date> dates = RequestUtil.getListOfDate(CURRENT_DAY, NUMBER_DAYS);
 
+        request.setAttribute("orderBy", orderBy);
+        request.setAttribute("direction", direction);
+        request.setAttribute("date", date);
         request.setAttribute("dates", dates);
         request.setAttribute("screenings", screenings);
         return new Forward(PAGE);

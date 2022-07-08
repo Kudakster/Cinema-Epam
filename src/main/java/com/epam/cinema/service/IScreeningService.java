@@ -15,7 +15,7 @@ public interface IScreeningService {
 
     List<Screening> findAllScreenings();
 
-    List<Screening> findScreeningsByDate(Date date, Time time);
+    List<Screening> findScreeningsByDate(Date date, Time time, String orderBy, String direction);
 
     List<Screening> findScreeningsByPagination(Integer missedScreenings, Integer numberScreenings);
 

@@ -27,7 +27,6 @@ com\epam\cinema\commands\open\CommandOpenUpdateSchedule.class
 com\epam\cinema\dao\IDAOUser.class
 com\epam\cinema\dao\mysql\MySQLConstants$SeatReserved.class
 com\epam\cinema\commands\add\CommandAddScreening.class
-com\epam\cinema\commands\open\CommandOpenChangePasswordPage.class
 com\epam\cinema\filter\CharsetFilter.class
 com\epam\cinema\enity\Screening.class
 com\epam\cinema\commands\add\CommandAddNewUser.class
@@ -62,7 +61,6 @@ com\epam\cinema\filter\LangFilter.class
 com\epam\cinema\commands\RequestUtil.class
 com\epam\cinema\dao\implementation\DAOAuditoriumImpl.class
 com\epam\cinema\service\implementation\UserServiceImpl.class
-com\epam\cinema\commands\update\CommandUpdateSchedule.class
 com\epam\cinema\commands\add\CommandAddNewTicket.class
 com\epam\cinema\dao\implementation\DAOTicketImpl.class
 com\epam\cinema\dao\mysql\MySQLConstants$User.class
@@ -87,7 +85,6 @@ com\epam\cinema\service\implementation\TicketServiceImpl.class
 com\epam\cinema\service\IScreeningService.class
 com\epam\cinema\service\ServiceFactory.class
 com\epam\cinema\dao\mysql\MySQLConstants$Seat.class
-com\epam\cinema\commands\update\CommandUpdateScreening.class
 com\epam\cinema\commands\open\CommandOpenScreeningPage.class
 com\epam\cinema\filter\CookieFilter.class
 com\epam\cinema\dao\mysql\MySQLConstants$Auditorium.class

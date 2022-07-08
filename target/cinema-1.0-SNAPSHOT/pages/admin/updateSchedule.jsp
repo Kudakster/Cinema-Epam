@@ -41,7 +41,7 @@
                     <div class="mb-3 mt-3">
                         <label class="form-label"><fmt:message key="label.startTime"/>
                             <input type="time" class="form-control w-100" name="startTime"
-                                   min="09:00:00" max="22:00:00"/>
+                                   max="22:00:00"/>
                         </label>
                     </div>
 

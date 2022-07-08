@@ -59,7 +59,6 @@
     <img src="${pageContext.request.contextPath}/image/icon-right.svg" width="60" height="105">
 </button>
 
-
 <%--<div class="top-movie-container">--%>
 <%--    <div class="video-container">--%>
 <%--        <iframe src="https://www.youtube.com/embed/giXco2jaZ_4?version=3&autoplay=1&loop=1&cc_load_policy=3&mute=1&controls=0&iv_load_policy=3&playlist=giXco2jaZ_4"--%>

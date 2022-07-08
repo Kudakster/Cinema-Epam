@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Redirect implements Executor {
     private boolean isValid = true;
-    private final String command;
+    private String command;
     private String errorCommand;
     private String errorKey;
 
@@ -24,7 +24,7 @@ public class Redirect implements Executor {
 
     public Redirect(String errorCommand, String errorKey) {
         this.isValid = false;
-        this.command = errorCommand;
+        this.errorCommand = errorCommand;
         this.errorKey = errorKey;
     }
 

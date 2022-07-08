@@ -55,7 +55,11 @@ public class MySQLConstants {
                 "(SELECT screening_id FROM cinema.seat_reserved WHERE seat_reserved_id IN\n" +
                 "(SELECT seat_reserved_id FROM cinema.tickets WHERE ticket_id=?));";
         public static final String SQL_GET_ALL_SCREENINGS = "SELECT * FROM screenings";
-        public static final String SQL_GET_SCREENINGS_BY_DATE = "SELECT * FROM screenings WHERE screening_date=? AND screening_start_time>=? ORDER BY screening_start_time;";
+        public static final String SQL_GET_SCREENINGS_BY_DATE = "SELECT * FROM screenings WHERE screening_date=? AND screening_start_time>=? ORDER BY ";
+        public static final String SQL_GET_SCREENINGS_BY_DATE_ORDER_BY_MOVIE_NAME = "SELECT screening_id, auditorium_id, screenings.movie_id, screening_date, screening_start_time, screening_end_time FROM screenings\n" +
+                "INNER JOIN movies ON movies.movie_id = screenings.movie_id\n" +
+                "WHERE screening_date=? AND screening_start_time>=? \n" +
+                "ORDER BY movies.movie_name";
         public static final String SQL_GET_SCREENING_BY_DATE_AND_AUDITORIUM_ID = "SELECT * FROM screenings WHERE screening_date>=? AND auditorium_id=?;";
         public static final String SQL_GET_SCREENINGS_BY_PAGINATION = "SELECT * FROM screenings LIMIT ?, ?";
         public static final String SQL_GET_SCREENINGS_BY_DATE_WITH_PAGINATION = "SELECT * FROM cinema.screenings WHERE screening_date>=?  \n" +
@@ -106,5 +110,8 @@ public class MySQLConstants {
                 "values(?, ?)";
         public static final String SQL_UPDATE_TICKET_BY_ID = "UPDATE tickets SET " +
                 "auditorium_id=?, seat_row=?, seat_number=? WHERE ticket_id=?;";
+        public static final String SQL_COUNT_TICKETS = "SELECT COUNT(*) FROM tickets WHERE seat_reserved_id IN \n" +
+                "(SELECT seat_reserved_id FROM seat_reserved WHERE screening_id IN\n" +
+                "(SELECT screening_id FROM screenings WHERE screening_date>=?));";
     }
 }

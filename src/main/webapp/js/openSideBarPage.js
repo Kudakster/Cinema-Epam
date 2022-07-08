@@ -5,6 +5,7 @@ $(document).ready(function () {
     openPage("auditorium", "page=auditorium", "http://localhost:8080/cinema/admin");
     openPage("a-movie", "page=a-movie", "http://localhost:8080/cinema/admin");
     openPage("u-schedule", "page=u-schedule", "http://localhost:8080/cinema/admin");
+    openPage("statistic", "page=statistic", "http://localhost:8080/cinema/admin");
 });
 
 function openPage(idClick, cookie, URL) {

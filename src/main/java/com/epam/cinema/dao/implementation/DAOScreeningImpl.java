@@ -58,8 +58,12 @@ public class DAOScreeningImpl extends DAOGeneral<Screening> implements IDAOScree
     }
 
     @Override
-    public List<Screening> getScreeningsByDate(Date date, Time time) {
-        return getAllBy(MySQLConstants.Screening.SQL_GET_SCREENINGS_BY_DATE, date, time);
+    public List<Screening> getScreeningsByDate(Date date, Time time, String orderBy, String direction) {
+        if (orderBy.equals("movie_name")) {
+            return getAllBy(MySQLConstants.Screening.SQL_GET_SCREENINGS_BY_DATE_ORDER_BY_MOVIE_NAME.concat(" ").concat(direction), date, time);
+        }
+
+        return getAllBy(MySQLConstants.Screening.SQL_GET_SCREENINGS_BY_DATE.concat(orderBy).concat(" ").concat(direction), date, time);
     }
 
     @Override

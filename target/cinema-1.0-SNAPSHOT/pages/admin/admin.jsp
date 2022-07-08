@@ -38,9 +38,7 @@
                 <a class="section-reference" href="#auditorium" id="auditorium"><fmt:message key="label.auditorium"/></a>
             </div>
             <ul class="justify-content-center rounded mx-4">
-                <li><a class="header-reference mb-3 bg-dark rounded-3" href="#"><fmt:message key="label.currentSession"/></a>
-                </li>
-                <li><a class="header-reference mb-3 bg-dark rounded-3" href="#"><fmt:message key="label.statistic"/></a>
+                <li><a class="header-reference mb-3 bg-dark rounded-3" href="#statistic" id="statistic"><fmt:message key="label.statistic"/></a>
                 </li>
             </ul>
         </div>

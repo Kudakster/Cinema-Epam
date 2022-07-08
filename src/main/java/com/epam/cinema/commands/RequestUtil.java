@@ -7,13 +7,16 @@ import com.epam.cinema.enity.enumeration.UserRole;
 import com.epam.cinema.service.implementation.ImageUploadingService;
 import com.epam.cinema.service.ServiceFactory;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class RequestUtil {
     public Movie getMovieFromRequest(HttpServletRequest request) {
@@ -23,23 +26,10 @@ public class RequestUtil {
         String genre = request.getParameter("genre");
         String country = request.getParameter("country");
         String trailerURL = request.getParameter("trailer-url");
-        String imgURL = ImageUploadingService.uploadImage(request, "image");
+        String imgURL = getImageUrl(request);
         String durationMin = request.getParameter("duration-min");
         String description = request.getParameter("description");
-        java.util.Date date = null;
-        Date releaseDate = null;
-        try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String string = request.getParameter("release-date");
-            if (string != null) {
-                date = simpleDateFormat.parse(string);
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        if (date != null) {
-            releaseDate = new Date(date.getTime());
-        }
+        Date releaseDate = parseStringToDate(request.getParameter("release-date"));
 
         Movie movie = new Movie();
         movie.setName(name);
@@ -52,7 +42,6 @@ public class RequestUtil {
         movie.setImgURL(imgURL);
         movie.setDurationMin(durationMin);
         movie.setDescription(description);
-
         return movie;
     }
 
@@ -63,25 +52,24 @@ public class RequestUtil {
         String surName = request.getParameter("surname");
         String email = request.getParameter("email");
         String phoneNumber = request.getParameter("phone-number");
-
         return new User(login, password, firstName, surName, email, phoneNumber, UserRole.USER);
     }
 
     public Screening getScreeningFromRequest(HttpServletRequest request) {
-        String screeningID = request.getParameter("screeningID");
+        Integer screeningID = parseStringToInteger(request.getParameter("screeningID"));
         String movieName = request.getParameter("movie-name");
+        Integer movieID = ServiceFactory.getMovieService().findMovieByName(movieName).getId();
         String date = request.getParameter("date");
         Time startTime = Time.valueOf(request.getParameter("startTime").substring(0, 5).concat(":00"));
         Time endTime = Time.valueOf(request.getParameter("endTime").substring(0, 5).concat(":00"));
 
         Screening screening = new Screening();
-        screening.setScreeningID(parseStringToInteger(screeningID));
-        screening.setMovieID(ServiceFactory.getMovieService().findMovieByName(movieName).getId());
+        screening.setScreeningID(screeningID);
+        screening.setMovieID(movieID);
         screening.setAuditoriumID(1);
-        screening.setDate(Date.valueOf(date));
+        screening.setDate(parseStringToDate(date));
         screening.setStartTime(startTime);
         screening.setEndTime(endTime);
-
         return screening;
     }
 
@@ -95,7 +83,26 @@ public class RequestUtil {
         return dateList;
     }
 
-    private static Integer parseStringToInteger(String string) {
+    private Integer parseStringToInteger(String string) {
         return string != null ? Integer.valueOf(string) : null;
+    }
+
+    private Date parseStringToDate(String string) {
+        return string != null ? Date.valueOf(string) : null;
+    }
+
+    private String getImageUrl(HttpServletRequest request) {
+        Part part = null;
+        Part[] parts = new Part[0];
+        String imageUrl = request.getParameter("image-src");
+
+        try {
+            part = request.getPart("image");
+            parts = request.getParts().toArray(new Part[0]);
+        } catch (IOException | ServletException e) {
+            e.printStackTrace();
+        }
+
+        return  Objects.requireNonNull(part).getSize() > 0 ? ImageUploadingService.uploadImage(part, parts) : imageUrl;
     }
 }

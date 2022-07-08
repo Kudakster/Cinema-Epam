@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
@@ -85,10 +86,7 @@ public class DAOGeneral<T> {
 
         try (Connection connection = mySQLConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_STATEMENT)) {
-
-            for (int i = 1; i <= value.length; i++) {
-                preparedStatement.setObject(i, value[i - 1]);
-            }
+            addValuesToPreparedStatement(preparedStatement, value);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
@@ -121,7 +119,6 @@ public class DAOGeneral<T> {
     }
 
     protected boolean addMany(List<T> list, String SQL_STATEMENT) {
-        boolean result;
         try (Connection connection = mySQLConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL_STATEMENT)) {
 
@@ -133,13 +130,12 @@ public class DAOGeneral<T> {
                     e.printStackTrace();
                 }
             });
-            result = true;
             preparedStatement.executeBatch();
         } catch (SQLException sqle) {
             log.error(sqle);
             return false;
         }
-        return result;
+        return true;
     }
 
     protected <V> boolean update(T t, String SQL_STATEMENT, Integer paramNum, V value) {
@@ -182,11 +178,12 @@ public class DAOGeneral<T> {
         return result;
     }
 
-    protected int count(String SQL_STATEMENT) {
+    protected <V> int count(String SQL_STATEMENT, V... value) {
         int result = 0;
         try (Connection connection = mySQLConnection.getConnection();
-             Statement statement = connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery(SQL_STATEMENT);
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL_STATEMENT)) {
+            addValuesToPreparedStatement(preparedStatement, value);
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 result = resultSet.getInt(1);
             }
@@ -227,5 +224,11 @@ public class DAOGeneral<T> {
                 e.printStackTrace();
             }
         });
+    }
+
+    private <V> void addValuesToPreparedStatement(PreparedStatement preparedStatement, V[] value) throws SQLException {
+        for (int i = 1; i <= value.length; i++) {
+            preparedStatement.setObject(i, value[i - 1]);
+        }
     }
 }

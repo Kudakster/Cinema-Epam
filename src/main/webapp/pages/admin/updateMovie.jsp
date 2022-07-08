@@ -107,6 +107,7 @@
                 </div>
                 <label for="image" class="btn btn-success-soft btn-block"><fmt:message
                         key="label.movie.upload"/></label>
+                <input name="image-src" value="${requestScope.movie.imgURL}" hidden>
                 <input type="file" class="mb-2" id="image" name="image" multiple hidden>
             </div>
         </div>

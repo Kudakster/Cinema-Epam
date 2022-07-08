@@ -1,7 +1,6 @@
 package com.epam.cinema.commands.open;
 
 import com.epam.cinema.commands.ICommand;
-import com.epam.cinema.enity.Movie;
 import com.epam.cinema.enity.Screening;
 import com.epam.cinema.service.ServiceFactory;
 import com.epam.cinema.servlets.Executor;
@@ -13,7 +12,7 @@ import java.sql.Date;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class CommandOpenUpdateSchedule implements ICommand {
+public class CommandOpenUpdateSchedulePage implements ICommand {
     private final String PAGE = "updateSchedule";
     private final String ERROR_PAGE = "admin";
 
@@ -24,19 +23,15 @@ public class CommandOpenUpdateSchedule implements ICommand {
 
         Map<Date, List<Screening>> screeningMap = ServiceFactory.getScreeningService()
                 .getGroupedMapScreeningByDateWithPagination(missedScreenings, numberScreenings);
-
         Map<Integer, String> movieMap = null;
 
         if (screeningMap != null) {
             addAllDate(screeningMap);
-
-            movieMap = screeningMap.values()
+            movieMap = ServiceFactory.getMovieService().getMapMovieIdAndMovieName(screeningMap.values()
                     .stream()
                     .flatMap(Collection::stream)
-                    .map(Screening::getMovieID)
                     .distinct()
-                    .map(i -> ServiceFactory.getMovieService().findMovieById(i))
-                    .collect(Collectors.toMap(Movie::getId, Movie::getName));
+                    .collect(Collectors.toList()));
         }
 
         request.setAttribute("movieMap", movieMap);

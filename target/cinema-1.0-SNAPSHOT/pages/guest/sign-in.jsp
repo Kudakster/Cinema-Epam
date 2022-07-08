@@ -2,7 +2,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page import="java.net.URLDecoder"%>
+<%@ taglib prefix="y" uri="custom" %>
+<%@ page import="java.net.URLDecoder" %>
 
 <fmt:setLocale value="${cookie['cookieLocale'].value}"/>
 <fmt:setBundle basename="messages"/>
@@ -38,12 +39,14 @@ ${pageContext.ELContext.importHandler.importClass('java.net.URLEncoder')}
         <h1 class="h3 mb-3 fw-normal"><fmt:message key="label.sign-in"/></h1>
 
         <div class="form-floating">
-                <input type="text" class="form-control" name="login" id="floatingInput" placeholder="<fmt:message key="label.login"/>"
-                       value="">
+            <input type="text" class="form-control" name="login" id="floatingInput"
+                   placeholder="<fmt:message key="label.login"/>"
+                   value="">
             <label for="floatingInput" value=""><fmt:message key="label.login"/></label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="<fmt:message key="label.password"/>">
+            <input type="password" class="form-control" name="password" id="floatingPassword"
+                   placeholder="<fmt:message key="label.password"/>">
             <label for="floatingPassword"><fmt:message key="label.password"/></label>
         </div>
 
@@ -54,7 +57,7 @@ ${pageContext.ELContext.importHandler.importClass('java.net.URLEncoder')}
         </div>
 
         <button class="w-100 btn btn-lg btn-primary"><fmt:message key="button.sign-in"/></button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+        <p class="mt-5 mb-3 text-muted"><y:guruTag/></p>
     </form>
 </main>
 </body>

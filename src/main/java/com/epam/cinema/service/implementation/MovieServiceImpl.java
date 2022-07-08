@@ -2,9 +2,12 @@ package com.epam.cinema.service.implementation;
 
 import com.epam.cinema.dao.implementation.DAOMovieImpl;
 import com.epam.cinema.enity.Movie;
+import com.epam.cinema.enity.Screening;
 import com.epam.cinema.service.IMovieService;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MovieServiceImpl implements IMovieService {
     private DAOMovieImpl daoMovie;
@@ -62,6 +65,14 @@ public class MovieServiceImpl implements IMovieService {
     @Override
     public boolean deleteMovieByID(Integer id) {
         return daoMovie.deleteMovieByID(id);
+    }
+
+    public Map<Integer, String> getMapMovieIdAndMovieName(List<Screening> screenings) {
+        return screenings.stream()
+                .map(Screening::getMovieID)
+                .distinct()
+                .map(this::findMovieById)
+                .collect(Collectors.toMap(Movie::getId, Movie::getName));
     }
 
     public static MovieServiceImpl getInstance() {

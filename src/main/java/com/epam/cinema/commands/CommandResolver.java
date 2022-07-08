@@ -15,30 +15,30 @@ import java.util.Map;
 
 public class CommandResolver {
     private static CommandResolver instance = null;
-    Map<String, ICommand> commands = new HashMap<>();
+    private final Map<String, ICommand> commands = new HashMap<>();
 
     public CommandResolver() {
-        /** Commands available for All */
+        /* Commands available for All */
         commands.put("main", new CommandOpenMainPage());
         commands.put("screening", new CommandOpenScreeningPage());
-        /** Commands available for Guest */
+        /* Commands available for Guest */
         commands.put("login", new CommandOpenLoginPage());
         commands.put("registration", new CommandOpenSignUpPage());
         commands.put("sign-in", new CommandValidateUser());
         commands.put("sign-up", new CommandAddNewUser());
-        /** Commands available for User */
+        /* Commands available for User */
         commands.put("user", new CommandOpenUserPage());
         commands.put("buy-ticket", new CommandAddNewTicket());
         commands.put("update-user", new CommandUpdateUser());
-        commands.put("validateLogin", new CommandValidateLogin());
         commands.put("logout", new CommandLogout());
-        /** Commands available for Administration */
+        /* Commands available for Administration */
         commands.put("admin", new CommandOpenAdminPage());
         commands.put("movies", new CommandOpenListOfMoviesPage());
         commands.put("auditorium", new CommandOpenAuditoriumPage());
         commands.put("a-movie", new CommandOpenAddMoviePage());
         commands.put("u-movie", new CommandOpenUpdateMoviePage());
-        commands.put("u-schedule", new CommandOpenUpdateSchedule());
+        commands.put("u-schedule", new CommandOpenUpdateSchedulePage());
+        commands.put("statistic", new CommandOpenStatisticPage());
         commands.put("add-movie", new CommandAddMovie());
         commands.put("add-screening", new CommandAddScreening());
         commands.put("update-auditorium", new CommandUpdateAuditorium());
@@ -46,7 +46,6 @@ public class CommandResolver {
         commands.put("update-movie", new CommandUpdateMovie());
         commands.put("delete-movie", new CommandDeleteMovie());
         commands.put("delete-screening", new CommandDeleteScreening());
-        commands.put("validateMovieName", new CommandValidateMovieName());
     }
 
     public ICommand getCommand(HttpServletRequest request) {
@@ -54,8 +53,9 @@ public class CommandResolver {
     }
 
     public static CommandResolver getInstance() {
-        if (instance == null)
+        if (instance == null) {
             instance = new CommandResolver();
+        }
         return instance;
     }
 

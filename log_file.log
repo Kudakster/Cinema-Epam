@@ -48,3 +48,17 @@
 29-06-2022 09:16:19 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
 29-06-2022 10:03:46 ERROR DAOGeneral.update, line 153 -> java.sql.SQLException: No value specified for parameter 2
 08-07-2022 17:39:08 ERROR DAOGeneral.deleteMany, line 175 -> java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`cinema`.`seat_reserved`, CONSTRAINT `seat_reserved_ibfk_1` FOREIGN KEY (`seat_id`) REFERENCES `seats` (`seat_id`))
+09-07-2022 13:41:17 ERROR RequestUtil.getImageUrl, line 110 -> java.lang.NullPointerException: Cannot invoke "javax.servlet.http.Part.getSize()" because "part" is null
+09-07-2022 13:47:19 ERROR RequestUtil.getImageUrl, line 107 -> java.lang.NullPointerException: Cannot invoke "String.isEmpty()" because "str" is null
+09-07-2022 13:53:16 ERROR RequestUtil.getImageUrl, line 109 -> java.lang.NullPointerException
+09-07-2022 14:00:53 INFO RequestUtil.getImageUrl, line 109 -> Part is equal to 0
+09-07-2022 14:01:09 INFO RequestUtil.getImageUrl, line 109 -> Cannot invoke "javax.servlet.http.Part.getSize()" because "part" is null
+09-07-2022 14:05:38 INFO RequestUtil.getImageUrl, line 109 -> Part is equal to 0
+09-07-2022 16:21:05 INFO RequestUtil.getImageUrl, line 109 -> Part is equal to 0
+09-07-2022 16:22:57 INFO RequestUtil.getImageUrl, line 109 -> Part is equal to 0
+09-07-2022 16:31:24 INFO RequestUtil.getImageUrl, line 109 -> Part is equal to 0
+09-07-2022 17:37:29 INFO RequestUtil.getImageUrl, line 109 -> Part is equal to 0
+09-07-2022 17:38:53 INFO RequestUtil.getImageUrl, line 109 -> Part is equal to 0
+09-07-2022 17:49:59 INFO RequestUtil.getImageUrl, line 109 -> Part is equal to 0
+09-07-2022 18:38:42 INFO RequestUtil.getImageUrl, line 109 -> Part is equal to 0
+09-07-2022 18:42:03 INFO RequestUtil.getImageUrl, line 109 -> Part is equal to 0

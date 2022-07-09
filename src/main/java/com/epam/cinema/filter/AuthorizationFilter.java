@@ -71,16 +71,16 @@ public class AuthorizationFilter extends HttpFilter {
     }
 
     private void authenticUser() {
-        authentic(UserRole.USER);
+        authentic(UserRole.USER, UserRole.ADMIN);
     }
 
     private void authenticAdmin() {
         authentic(UserRole.ADMIN);
     }
 
-    private void authentic(UserRole required) {
+    private void authentic(UserRole... required) {
         UserRole userRole = getUserRole();
-        if (required.equals(userRole)) {
+        if (userRole != null && List.of(required).contains(userRole)) {
             doFilterWithHandlingException();
         } else {
             redirectToMainPage();
